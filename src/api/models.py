@@ -9,6 +9,15 @@ class User(db.Model):
     email: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean(), nullable=False)
+    user_name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
+
+    def __init__(self, email, user_name, password):
+
+        self.email = email;
+        self.user_name = user_name;
+        self.password = password;
+        self.is_active = True
+
 
 
     def serialize(self):
